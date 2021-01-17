@@ -14,90 +14,92 @@ const readUTF = (buf)=>{
 
 }
 
+
+class BinaryData{
+	constructor(buf){
+		this.buf = buf;
+		this.index = 0;
+	}
+	readInt(){
+		const value = this.buf.readInt32BE(this.index);
+		this.index += 4;
+		return value;
+	}
+	readFloat(){
+		const value = this.buf.readFloatBE(this.index);
+		this.index += 4;
+		return value;
+	}
+	readShort(){
+		const value =  this.buf.readInt16BE(this.index);
+		this.index += 2;
+		return value;
+	}
+	readBoolean(){
+		const value = Boolean(this.buf.readUInt8(this.index));
+		this.index++;
+		return value;
+	}
+	readUTF(){
+		let str = '';
+		const size = this.readShort();
+		for(let i = 0; i < size; i++){
+			str += String.fromCharCode(this.buf.readUInt8(this.index)); 
+			this.index++;
+		}
+		return str;
+
+	}
+
+
+}
+
 const loadExtra = (thing,buf)=>{
-	thing.i1 = buf.readInt32BE(index);
-	index += 4;
-	thing.f1 = buf.readFloatBE(index);
-	index += 4;
-	thing.f2 = buf.readFloatBE(index);
-	index += 4;
-	thing.f3 = buf.readFloatBE(index);
-	index += 4;
-	thing.f4 = buf.readFloatBE(index);
-	index += 4;
-	thing.f5 = buf.readFloatBE(index);
-	index += 4;
-	thing.f6 = buf.readFloatBE(index);
-	index += 4;
-	thing.f7 = buf.readFloatBE(index);
-	index += 4;
-	thing.f8 = buf.readFloatBE(index);
-	index += 4;
-	thing.f9 = buf.readFloatBE(index);
-	index += 4;
-	thing.f10 = buf.readFloatBE(index);
-	index += 4;
-	thing.f11 = buf.readFloatBE(index);
-	index += 4;
-	thing.f12 = buf.readFloatBE(index);
-	index += 4;
-	thing.f13 = buf.readFloatBE(index);
-	index += 4;
-	thing.f14 = buf.readFloatBE(index);
-	index += 4;
-	thing.i2 = buf.readInt32BE(index);
-	index += 4;
-	thing.i3 = buf.readInt32BE(index);
-	index += 4;
-	thing.i4 = buf.readInt32BE(index);
-	index += 4;
-	thing.i5 = buf.readInt32BE(index);
-	index += 4;
-	thing.i6 = buf.readInt32BE(index);
-	index += 4;
-	thing.i7 = buf.readInt32BE(index);
-	index += 4;
-	thing.i8 = buf.readInt32BE(index);
-	index += 4;
-	thing.i9 = buf.readInt32BE(index);
-	index += 4;
-	thing.i10 = buf.readInt32BE(index);
-	index += 4;
+	thing.i1 = buf.readInt();
+	thing.f1 = buf.readFloat();
+	thing.f2 = buf.readFloat();
+	thing.f3 = buf.readFloat();
+	thing.f4 = buf.readFloat();
+	thing.f5 = buf.readFloat();
+	thing.f6 = buf.readFloat();
+	thing.f7 = buf.readFloat();
+	thing.f8 = buf.readFloat();
+	thing.f9 = buf.readFloat();
+	thing.f10 = buf.readFloat();
+	thing.f11 = buf.readFloat();
+	thing.f12 = buf.readFloat();
+	thing.f13 = buf.readFloat();
+	thing.f14 = buf.readFloat();
+	thing.i2 = buf.readInt();
+	thing.i3 = buf.readInt();
+	thing.i4 = buf.readInt();
+	thing.i5 = buf.readInt();
+	thing.i6 = buf.readInt();
+	thing.i7 = buf.readInt();
+	thing.i8 = buf.readInt();
+	thing.i9 = buf.readInt();
+	thing.i10 = buf.readInt();
 
 }
 const loadEnemy = buf=>{
 	const enemy = {};
-	enemy.int1 = buf.readInt32BE(index);
-	index += 4;
-	enemy.name = readUTF(buf);
-	enemy.extraSize = buf.readInt16BE(index);
-	index += 2;
-	enemy.float1 = buf.readFloatBE(index);
-	index += 4;
-	enemy.float2 = buf.readFloatBE(index);
-	index += 4;
-	enemy.boolean1 = Boolean(buf.readUInt8(index));
-	index += 1;
-	enemy.float3 = buf.readFloatBE(index);
-	index += 4;
-	enemy.float4 = buf.readFloatBE(index);
-	index += 4;
-	enemy.float5 = buf.readFloatBE(index);
-	index += 4;
-	enemy.float6 = buf.readFloatBE(index);
-	index += 4;
-	enemy.int2 = buf.readInt32BE(index);
-	index += 4;
-	enemy.int3 = buf.readInt32BE(index);
-	index += 4;
-	enemy.int4 = buf.readInt32BE(index);
-	index += 4;
-	enemy.short1 = buf.readInt16BE(index);
-	index += 2;
-	enemy.short2 = buf.readInt16BE(index);
-	index += 2;
-	enemy.short3 = buf.readInt16BE(index);
-	index += 2;
+	enemy.int1 = buf.readInt();
+	enemy.name = buf.readUTF();
+	console.log(enemy.name);
+	enemy.extraSize = buf.readShort();
+	enemy.float1 = buf.readFloat();
+	enemy.float2 = buf.readFloat();
+	enemy.boolean1 = buf.readBoolean();
+	enemy.float3 = buf.readFloat();
+	enemy.float4 = buf.readFloat();
+	enemy.float5 = buf.readFloat();
+	enemy.float6 = buf.readFloat();
+	enemy.int2 = buf.readInt();
+	enemy.int3 = buf.readInt();
+	enemy.int4 = buf.readInt();
+	enemy.short1 = buf.readShort();
+	enemy.short2 = buf.readShort();
+	enemy.short3 = buf.readShort();
 	enemy.extra = [];
 	for(let i = 0; i < enemy.extraSize; i++){
 		const thing = {}
@@ -109,10 +111,11 @@ const loadEnemy = buf=>{
 
 const init = ()=>{
 	const buf = fs.readFileSync('enemies.bin');
+	const binData = new BinaryData(buf);
 	index = 0;
-	loadEnemy(buf);
-	console.log(index);
-	loadEnemy(buf);
+	loadEnemy(binData);
+	//console.log(index);
+	loadEnemy(binData);
 
 
 }
