@@ -49,6 +49,9 @@ module.exports = class ByteArray{
 		}
 		return str;
 	}
+	isEmpty(){
+		return this.index >= this.buf.length;
+	}
 
 }
 
