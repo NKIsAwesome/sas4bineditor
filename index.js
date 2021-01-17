@@ -11,6 +11,7 @@ const init = ()=>{
 	while(!binData.isEmpty()){
 		enemies.push(new Enemy(binData));
 	}
+	fs.writeFileSync('output/fullEnemies.json',JSON.stringify(enemies.map(e=>e.getValues()),null,2));
 
 
 }

@@ -55,6 +55,22 @@ module.exports = class Enemy{
 			this.grades.push(this.loadGrade(buf));
 		}
 	}
+	getValues(){
+		const result = {
+		};
+		let grades = [];
+		Object.entries(this).forEach(([k,v])=>{
+			if(k === 'grades'){
+				grades = v.map(grade=>{
+					const newGrade = {};
+					Object.entries(grade).forEach(([key,value])=>newGrade[key] = value.value);
+					return newGrade;
+				});
+			} else result[k] = v.value;
+		});
+		result.grades = grades;
+		return result;
+	}
 
 
 

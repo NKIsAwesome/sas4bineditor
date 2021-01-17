@@ -41,13 +41,17 @@ module.exports = class ByteArray{
 		return result;
 	}
 	readUTF(){
-		let str = '';
+		let result = {
+			value: '',
+			index: this.index,
+			writer: this.writeUTF
+		}
 		const size = this.readShort().value;
 		for(let i = 0; i < size; i++){
-			str += String.fromCharCode(this.buf.readUInt8(this.index)); 
+			result.value += String.fromCharCode(this.buf.readUInt8(this.index)); 
 			this.index++;
 		}
-		return str;
+		return result;
 	}
 	isEmpty(){
 		return this.index >= this.buf.length;
