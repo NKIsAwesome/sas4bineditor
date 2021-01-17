@@ -24,6 +24,11 @@ module.exports = class ByteArray{
 		this.index++;
 		return result;
 	}
+	readByte(){
+		const result = new ByteResult(this.buf.readUInt8(this.index),this.index,this.writeByte);
+		this.index++;
+		return result;
+	}
 	readUTF(){
 		const result = new ByteResult('',this.index,this.writeUTF);
 		const size = this.readShort().value;

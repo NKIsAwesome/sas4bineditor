@@ -1,6 +1,7 @@
 const fs = require('fs');
 const ByteArray = require('./ByteArray');
 const Enemy = require('./Enemy');
+const Equipment = require('./Equipment');
 
 
 
@@ -11,6 +12,10 @@ const init = ()=>{
 	while(!binData.isEmpty()){
 		enemies.push(new Enemy(binData));
 	}
+	const eq = fs.readFileSync('equipment.bin');
+	const eqBinData = new ByteArray(eq);
+	console.log((new Equipment(eqBinData)).getValues());
+	console.log((new Equipment(eqBinData)).getValues());
 	//fs.writeFileSync('output/fullEnemies.json',JSON.stringify(enemies.map(e=>e.getValues()),null,2));
 	//enemies[0].grades[0].health.write(1);
 	//enemies[0].grades[0].meleeDamage.write(0);
