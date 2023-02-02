@@ -17,12 +17,20 @@ module.exports = class SchemaParser{
 					result[item.name].push(this.loadTarget(this.schema[item.lookupId]));
 				}
 				return;
+			} else if(item.type === 'array'){
+				result[item.name] = [];
+				for(let i = 0; i < item.arrayLength; i++){
+					result[item.name].push(this.byteArray['read' + item.arrayType]());
+				}
+				return;
 			}
 			result[item.name] = this.byteArray['read'+item.type]();
+			if(item.max) result[item.name].value = Math.max(item.max, result[item.name].value);
 		});
 		return result;
 	}
 	serialize(object = this.result){
+		if('value' in object && object.callback) return object.value;
 		const result = {
 		};
 		Object.entries(object).forEach(([k,v])=>{
