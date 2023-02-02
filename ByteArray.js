@@ -50,6 +50,9 @@ module.exports = class ByteArray{
 	writeShort(value,index){
 		this.buf.writeInt16BE(value,index);
 	}
+	writeByte(value,index){
+		this.buf.writeUInt8(value,index);
+	}
 
 }
 

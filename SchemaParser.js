@@ -11,6 +11,7 @@ module.exports = class SchemaParser{
 	loadTarget(target){
 		const result = {};
 		target.forEach(item=>{
+			if(item.dependsOn && !result[item.dependsOn].value) return;
 			if(item.type === 'lookup'){
 				result[item.name] = [];
 				for(let i = 0; i < result[item.lengthId].value; i++){
@@ -19,7 +20,9 @@ module.exports = class SchemaParser{
 				return;
 			} else if(item.type === 'array'){
 				result[item.name] = [];
-				for(let i = 0; i < item.arrayLength; i++){
+				let arrayLength = item.arrayLength;
+				if(!arrayLength) arrayLength = result[item.arrayLengthLookup].value;
+				for(let i = 0; i < arrayLength; i++){
 					result[item.name].push(this.byteArray['read' + item.arrayType]());
 				}
 				return;
