@@ -1,0 +1,225 @@
+{
+	"root":"weapon",
+	"weapon":[
+		{
+			"name": "id",
+			"type": "Short"
+		},
+		{
+			"name": "name",
+			"type": "Short"
+		},
+		{
+			"name": "description",
+			"type": "Short"
+		},
+		{
+			"name": "manufacturer",
+			"type": "Byte"
+		},
+		{
+			"name": "category",
+			"type": "Byte"
+		},
+		{
+			"name": "rating",
+			"type": "Short"
+		},
+		{
+			"name": "maxGrade",
+			"type": "Short"
+		},
+		{
+			"name": "rarity",
+			"type": "Short"
+		},
+		{
+			"name": "cost",
+			"type": "Int"
+		},
+		{
+			"name": "range",
+			"type": "Float"
+		},
+		{
+			"name": "accuracy",
+			"type": "Float"
+		},
+		{
+			"name": "isCone",
+			"type": "Boolean"
+		},
+		{
+			"name": "unknown",
+			"type": "Float"
+		},
+		{
+			"name": "rps",
+			"type": "Float"
+		},
+		{
+			"name": "clipSize",
+			"type": "Short"
+		},
+		{
+			"name": "reloadSpeed",
+			"type": "Float"
+		},
+		{
+			"name": "movementReduction",
+			"type": "Float"
+		},
+		{
+			"name": "projectileSpeed",
+			"type": "Float"
+		},
+		{
+			"name": "triggerType",
+			"type": "Byte"
+		},
+		{
+			"name": "ammoID",
+			"type": "Short"
+		},
+		{
+			"name": "display",
+			"type": "Short"
+		},
+		{
+			"name": "profile",
+			"type": "Short"
+		},
+		{
+			"name": "eject",
+			"type": "Short"
+		},
+		{
+			"name": "continuousEject",
+			"type": "Boolean"
+		},
+		{
+			"name": "reloadType",
+			"type": "Short"
+		},
+		{
+			"name": "pose",
+			"type": "Byte"
+		},
+		{
+			"name": "ejectXOffset",
+			"type": "Float"
+		},
+		{
+			"name": "ejectYOffset",
+			"type": "Float"
+		},
+		{
+			"name": "premiumEject",
+			"type": "Short"
+		},
+		{
+			"name": "premiumEjectXOffset",
+			"type": "Float"
+		},
+		{
+			"name": "premiumEjectYOffset",
+			"type": "Float"
+		},
+		{
+			"name": "gibAmount",
+			"type": "Float"
+		},
+		{
+			"name": "appearsInStore",
+			"type": "Boolean"
+		},
+		{
+			"name": "weaponSound",
+			"type": "Short"
+		},
+		{
+			"name": "destroyedTurret",
+			"type": "Short"
+		},
+		{
+			"name": "weaponVersion",
+			"type": "Short"
+		},
+		{
+			"name": "isEnemyWeapon",
+			"type": "Boolean"
+		},
+		{
+			"name": "isSeeking",
+			"type": "Boolean"
+		},
+		{
+			"name": "explosion",
+			"type": "Short"
+		},
+		{
+			"name": "playerStoreLevel",
+			"type": "Short"
+		},
+		{
+			"name": "turretBase",
+			"type": "Short"
+		},
+		{
+			"name": "turretTop",
+			"type": "Short"
+		},
+		{
+			"name": "deployTurretBase",
+			"type": "Short"
+		},
+		{
+			"name": "deployTurretTop",
+			"type": "Short"
+		},
+		{
+			"name": "isTurret",
+			"type": "Boolean"
+		},
+		{
+			"name": "turretTargetAngle",
+			"type": "Float"
+		},
+		{
+			"name": "burstSpeed",
+			"type": "Float"
+		},
+		{
+			"name": "burstCount",
+			"type": "Short"
+		},
+		{
+			"name": "childrenTurret",
+			"type": "Short"
+		},
+		{
+			"name": "childTurretIndex",
+			"type": "Short"
+		},
+		{
+			"name": "reloadSoundGroupID",
+			"type": "Int"
+		},
+		{
+			"name": "consumableType",
+			"type": "Short"
+		},
+		{
+			"name": "consumableOrder",
+			"type": "Short"
+		},
+		{
+			"name": "minGradeDrop",
+			"type": "Short"
+		},
+		{
+			"name": "isObtainable",
+			"type": "Boolean"
+		}
+	]
+}

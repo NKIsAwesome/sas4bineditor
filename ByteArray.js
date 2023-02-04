@@ -20,12 +20,12 @@ module.exports = class ByteArray{
 		return result;
 	}
 	readBoolean(){
-		const result = new ByteResult(Boolean(this.buf.readUInt8(this.index)),this.index,this.writeBoolean);
+		const result = new ByteResult(Boolean(this.buf.readUInt8(this.index)),this.index,this.writeBoolean.bind(this));
 		this.index++;
 		return result;
 	}
 	readByte(){
-		const result = new ByteResult(this.buf.readUInt8(this.index),this.index,this.writeByte);
+		const result = new ByteResult(this.buf.readUInt8(this.index),this.index,this.writeByte.bind(this));
 		this.index++;
 		return result;
 	}
@@ -52,6 +52,9 @@ module.exports = class ByteArray{
 	}
 	writeByte(value,index){
 		this.buf.writeUInt8(value,index);
+	}
+	writeBoolean(value,index){
+		this.buf.writeUInt8(Number(value),index);
 	}
 
 }
