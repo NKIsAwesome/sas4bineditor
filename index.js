@@ -7,10 +7,22 @@ const enemySchema = require('./enemySchema.json');
 const equipmentSchema = require('./equipmentSchema.json');
 const mapSchema = require('./mapSchema.json');
 const weaponSchema = require('./weaponSchema.json');
+const ammoSchema = require('./ammoSchema.json');
 
 
 
 const init = ()=>{
+
+	/*
+	const buf = fs.readFileSync('ammo.bin');
+	const binData = new ByteArray(buf);
+	const ammos = [];
+	while(!binData.isEmpty()){
+		ammos.push((new SchemaParser(binData, ammoSchema)));	
+	}
+	fs.writeFileSync('output/fullAmmos.json',JSON.stringify(ammos.map(e=>e.serialize()),null,2));
+	*/
+
 	
 	const buf = fs.readFileSync('weapons.bin');
 	const binData = new ByteArray(buf);
@@ -19,9 +31,16 @@ const init = ()=>{
 		weapons.push((new SchemaParser(binData, weaponSchema)));	
 	}
 	fs.writeFileSync('output/fullWeapons.json',JSON.stringify(weapons.map(e=>e.serialize()),null,2));
-	const ronson45 = weapons.find(weapon=>weapon.result.id.value === 77);
-	ronson45.result.clipSize.write(222);
+//	const ronson45 = weapons.find(weapon=>weapon.result.id.value === 77);
+//	ronson45.result.clipSize.write(222);
+	const filtered = weapons.filter(weapon=>{
+		const result = weapon.result;
+		return result.minGradeDrop.value === -1 && result.weaponVersion.value !== 3 && result.manufacturer.value !== 13 && !result.isTurret.value
+	});
+	console.log(filtered.length);
+	console.log(filtered.map(a=>a.result.id.value));
 	fs.writeFileSync('output/weaponspatched.bin', binData.buf);
+	
 
 	/*
 	const buf = fs.readFileSync('enemies.bin');

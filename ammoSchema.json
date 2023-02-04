@@ -1,0 +1,137 @@
+{
+	"root":"ammo",
+	"ammo":[
+		{
+			"type": "Short",
+			"name": "id"
+		},
+		{
+			"type": "Byte",
+			"name": "projectileCount"
+		},
+		{
+			"type": "Float",
+			"name": "damage"
+		},
+		{
+			"type": "Byte",
+			"name": "damageType"
+		},
+		{
+			"type": "Float",
+			"name": "radius"
+		},
+		{
+			"type": "Byte",
+			"name": "pierce"
+		},
+		{
+			"type": "Float",
+			"name": "dot"
+		},
+		{
+			"type": "Float",
+			"name": "dotLength"
+		},
+		{
+			"type": "Float",
+			"name": "arcRange"
+		},
+		{
+			"type": "Float",
+			"name": "seekingAngle"
+		},
+		{
+			"type": "Float",
+			"name": "stunLength"
+		},
+		{
+			"type": "Float",
+			"name": "speedScale"
+		},
+		{
+			"type": "Float",
+			"name": "speedScaleDuration"
+		},
+		{
+			"type": "Short",
+			"name": "ammoDisplay"
+		},
+		{
+			"type": "Short",
+			"name": "trail"
+		},
+		{
+			"type": "Float",
+			"name": "trailEjectInstance"
+		},
+		{
+			"type": "Short",
+			"name": "wallHit"
+		},
+		{
+			"type": "Short",
+			"name": "enemyHit"
+		},
+		{
+			"type": "Short",
+			"name": "ammoDisplay2"
+		},
+		{
+			"type": "Short",
+			"name": "ammoDisplay3"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay1MinLength"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay1MaxLength"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay1MinSpacing"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay1MaxSpacing"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay2MinLength"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay2MaxLength"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay2MinSpacing"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay2MaxSpacing"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay3MinLength"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay3MaxLength"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay3MinSpacing"
+		},
+		{
+			"type": "Float",
+			"name": "ammoDisplay3MaxSpacing"
+		},
+		{
+			"type": "Short",
+			"name": "impactType"
+		}
+	]
+}
