@@ -57,9 +57,9 @@ module.exports = class ByteArray{
 		this.buf.writeUInt8(Number(value),index);
 	}
 	writeUTF(value, index){
-		this.writeShort(value.length, index);
+		this.buf.writeInt16BE(value.length,index);
 		for(let i = 0; i < value.length; i++){
-			this.writeByte(value.charCodeAt(i), index+i+2);
+			this.buf.writeUInt8(value.charCodeAt(i), index+i+2);
 		}
 	}
 

@@ -3,6 +3,7 @@ const ByteArray = require('./ByteArray');
 const Enemy = require('./Enemy');
 const Equipment = require('./Equipment');
 const SchemaParser = require('./SchemaParser');
+const SchemaWriter = require('./SchemaWriter');
 const enemySchema = require('./enemySchema.json');
 const equipmentSchema = require('./equipmentSchema.json');
 const mapSchema = require('./mapSchema.json');
@@ -45,7 +46,13 @@ const init = ()=>{
 	//fs.writeFileSync('output/weaponspatched.bin', binData.buf);
 	
 
+	const data = require('./output/pods.json');
+	const parser = new SchemaWriter(data, mapSchema);
+	console.log(parser.byteArray);
+	fs.writeFileSync('output/podsJson.bin', parser.byteArray.buf);
 	
+
+	/*	
 	const buf = fs.readFileSync('enemies.bin');
 	const binData = new ByteArray(buf);
 	const enemies = [];
@@ -57,6 +64,7 @@ const init = ()=>{
 	fs.writeFileSync('output/fullEnemies.json',JSON.stringify(enemies.map(e=>e.serialize()),null,2));
 	enemies[0].result.name.write("Whampled");
 	fs.writeFileSync('output/patchedenemies.bin', binData.buf);
+	*/
 
 	
 	
