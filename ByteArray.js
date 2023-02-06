@@ -30,7 +30,7 @@ module.exports = class ByteArray{
 		return result;
 	}
 	readUTF(){
-		const result = new ByteResult('',this.index,this.writeUTF);
+		const result = new ByteResult('',this.index,this.writeUTF.bind(this));
 		const size = this.readShort().value;
 		for(let i = 0; i < size; i++){
 			result.value += String.fromCharCode(this.buf.readUInt8(this.index)); 
@@ -55,6 +55,12 @@ module.exports = class ByteArray{
 	}
 	writeBoolean(value,index){
 		this.buf.writeUInt8(Number(value),index);
+	}
+	writeUTF(value, index){
+		this.writeShort(value.length, index);
+		for(let i = 0; i < value.length; i++){
+			this.writeByte(value.charCodeAt(i), index+i+2);
+		}
 	}
 
 }

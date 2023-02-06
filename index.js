@@ -23,7 +23,8 @@ const init = ()=>{
 	fs.writeFileSync('output/fullAmmos.json',JSON.stringify(ammos.map(e=>e.serialize()),null,2));
 	*/
 
-	
+
+	/*
 	const buf = fs.readFileSync('weapons.bin');
 	const binData = new ByteArray(buf);
 	const weapons = [];
@@ -31,18 +32,20 @@ const init = ()=>{
 		weapons.push((new SchemaParser(binData, weaponSchema)));	
 	}
 	fs.writeFileSync('output/fullWeapons.json',JSON.stringify(weapons.map(e=>e.serialize()),null,2));
-//	const ronson45 = weapons.find(weapon=>weapon.result.id.value === 77);
-//	ronson45.result.clipSize.write(222);
-	const filtered = weapons.filter(weapon=>{
+	const jupiter = weapons.find(weapon=>weapon.result.id.value === 149);
+	jupiter.result.rarity.write(350);
+	jupiter.result.rating.write(123);*/
+	/*const filtered = weapons.filter(weapon=>{
 		const result = weapon.result;
 		return result.minGradeDrop.value === -1 && result.weaponVersion.value !== 3 && result.manufacturer.value !== 13 && !result.isTurret.value
 	});
 	console.log(filtered.length);
-	console.log(filtered.map(a=>a.result.id.value));
-	fs.writeFileSync('output/weaponspatched.bin', binData.buf);
+	console.log(filtered.map(a=>a.result.id.value));*/
+
+	//fs.writeFileSync('output/weaponspatched.bin', binData.buf);
 	
 
-	/*
+	
 	const buf = fs.readFileSync('enemies.bin');
 	const binData = new ByteArray(buf);
 	const enemies = [];
@@ -51,8 +54,11 @@ const init = ()=>{
 	}
 	
 
-	fs.writeFileSync('output/fullEnemiesSchemad.json',JSON.stringify(enemies.map(e=>e.serialize()),null,2));
-	*/
+	fs.writeFileSync('output/fullEnemies.json',JSON.stringify(enemies.map(e=>e.serialize()),null,2));
+	enemies[0].result.name.write("Whampled");
+	fs.writeFileSync('output/patchedenemies.bin', binData.buf);
+
+	
 	
 
 	/*const buf = fs.readFileSync('equipment.bin');
